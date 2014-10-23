@@ -2,14 +2,17 @@ class Rover
 	attr_accessor :x
 	attr_accessor :y
 	attr_accessor :direction
+
 	def initialize (x, y, direction)
 		@x = x
 		@y = y 
 		@direction = direction
 	end
+
 	def to_s
-		puts "#{@x}, #{@y}, #{@direction}"
+		"#{@x}, #{@y}, #{@direction}"
 	end
+
 	def read_instructions(instructions)
 		instructions.split("").each do |instruction|
 
@@ -24,18 +27,15 @@ class Rover
 			end
 		end
 	end
-
-	def grid_size(plateau_width, plateau_height)
-		@plateau_width = plateau_width
-		@plateau_height = plateau_height
-	end
+	
 	def grid_is_available (x, y)
-		if x.between?(0,@plateau_width) && y.between?(0, @plateau_height)
+		if x.between?(0,$plateau_width) && y.between?(0, $plateau_height)
 		true
 		else 
 		false
 		end
 	end
+
 	def attempt_to_move
 		proposed_x = @x 
 		proposed_y = @y
@@ -96,24 +96,27 @@ end
 
 
 
-
-
-
-
-
 puts "What is the size of the plateau?"
 input_grid_size=gets.chomp.split
-rover.grid_size(input_grid_size[0].to_i, input_grid_size[1].to_i)
+
+
+$plateau_width = input_grid_size[0].to_i
+$plateau_height = input_grid_size[1].to_i
+
+# puts "How many rovers do you have?"
+# input_number_of_rovers= gets.chomp.to_i
+
+
 
 puts "What is your initial position?"
 input_initial_position=gets.chomp.split
-rover = Rover.new(input_initial_position[0].to_i, input_initial_position[1].to_i, input_initial_position)
-puts rover
-
+rover = Rover.new(input_initial_position[0].to_i, input_initial_position[1].to_i, input_initial_position[2].to_s)
 
 puts rover
-rover.read_instructions("MMMMMMMMRML")
-puts rover
+# puts "What are the instructions?"
+# input_instructions = gets.chomp
+# rover.read_instructions(input_instructions)
+# puts rover
 
 
 
