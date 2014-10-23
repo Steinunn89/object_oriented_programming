@@ -9,13 +9,13 @@ class Person
 end
 
 
-class Student < People
+class Student < Person
 	def learn
 		puts "I get it!"
 	end
 end
 
-class Instructor < People
+class Instructor < Person
 	def teach
 		puts "Everything in Ruby is an Object"
 	end
