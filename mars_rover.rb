@@ -25,13 +25,13 @@ class Rover
 
 	def move
 		if @direction == "N"
-			@y = @y += 1
+			@y += 1
 		elsif @direction =="E"
-			@x = @x + 1
+			@x += 1
 		elsif @direction == "S"
-			@y = @y - 1
+			@y -= 1
 		else @direction =="W"
-			@x = @x - 1
+			@x -= 1
 		end
 	end
 	def turn_right
