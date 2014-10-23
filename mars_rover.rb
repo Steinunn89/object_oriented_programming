@@ -11,7 +11,7 @@ class Rover
 		puts "#{@x}, #{@y}, #{@direction}"
 	end
 	def read_instructions(instructions)
-		loop instructions.split do |instruction|
+		instructions.split("").each do |instruction|
 
 			if instruction == "M"
 			move
@@ -21,41 +21,40 @@ class Rover
 				turn_right			
 			end
 		end
-
-
 	end
 
 	def move
-		if direction == "N"
-			new_y = y + 1
-		elsif direction =="E"
-			new_x = x + 1
-		elsif direction == "S"
-			new_y = y - 1
-		else direction =="W"
-			new_x = x - 1
+		if @direction == "N"
+			@y = @y += 1
+		elsif @direction =="E"
+			@x = @x + 1
+		elsif @direction == "S"
+			@y = @y - 1
+		else @direction =="W"
+			@x = @x - 1
 		end
-		def turn_right
-			if direction == "N"
-				new_direction = "E"
-			elsif direction == "E"
-				new_direction = "S"
-			elsif direction == "S"
-				new_direction = "W"
-			else direction == "W"
-				new_direction = "N"
-			end
-		ens
-		def turn_left
-			if direction == "N"
-				new_direction = "W"
-			elsif direction == "W"
-				new_direction = "S"
-			elsif direction == "S"
-				new_direction = "E"
-			else direction == "E"
-				new_direction = "N"
-			end
+	end
+	def turn_right
+		if @direction == "N"
+			@direction = "E"
+		elsif @direction == "E"
+			@direction = "S"
+		elsif @direction == "S"
+			@direction = "W"
+		else @direction == "W"
+			@direction = "N"
+		end
+	end
+	def turn_left
+		if @direction == "N"
+			@direction = "W"
+		elsif @direction == "W"
+			@direction = "S"
+		elsif @direction == "S"
+			@direction = "E"
+		else @direction == "E"
+			@direction = "N"
+		end
 
 	end
 
@@ -65,7 +64,11 @@ end
 
 
 rover = Rover.new(0,0,"N")
+puts rover
 rover.read_instructions("MMRML")
+puts rover
+
+
 
 
 # class ReadInstructions 
