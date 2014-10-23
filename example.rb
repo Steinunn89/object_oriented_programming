@@ -44,14 +44,13 @@ end
 
 
 class Line
-	attr_accessor :direction
 	def initialize(point1, point2)
 		@point1 = point1
 		@point2 = point2
 	end
 
 	def to_s
-		"#{point1} == {point2}"
+		"#{@point1} == {@point2}"
 	end
 
 end

@@ -4,7 +4,7 @@ class Person
 		@name = name
 	end
 	def greeting
-		"Hi my name is #{@name}."
+		puts "Hi, my name is #{@name}."
 	end
 end
 
@@ -20,3 +20,11 @@ class Instructor < Person
 		puts "Everything in Ruby is an Object"
 	end
 end
+
+instructor = Instructor.new
+instructor.name = "Chris"
+instructor.greeting
+
+student = Student.new
+student.name = "Cristina"
+student.greeting
