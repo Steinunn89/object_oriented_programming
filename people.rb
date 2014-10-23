@@ -28,3 +28,11 @@ instructor.greeting
 student = Student.new
 student.name = "Cristina"
 student.greeting
+
+instructor.teach
+student.learn
+
+student.teach
+#This does not work because the student class does not include the teach method as it is a class method and it has inherited from Person class but not from Teacher class.
+
+
