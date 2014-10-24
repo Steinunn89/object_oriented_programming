@@ -18,8 +18,18 @@ def parseInput (input)
 	splitted_input = input.split(" ")
 	quantity = splitted_input[0]
 	price = splitted_input[splitted_input.length - 1]
-	imported = input.include?("imported")
-	puts "#{quantity} and #{price} and #{imported}"
+	imported = input.include?("imported") 
+
+	index_array = []
+	input.to_enum(:scan,/ /i).map do |m,|
+    	index_array << $`.size
+	end
+
+	start_index = index_array[0] + 1
+	end_index = index_array[index_array.length - 2] -1
+	item_name = input[start_index, end_index]
+
+	puts "#{quantity} and #{price} and #{imported} and #{item_name}"
 end
 
 puts "Please input your grocery list."
