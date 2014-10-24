@@ -1,4 +1,5 @@
 class Rover
+
 	attr_accessor :x
 	attr_accessor :y
 	attr_accessor :direction
@@ -30,15 +31,16 @@ class Rover
 	
 	def grid_is_available (x, y)
 		if x.between?(0,$plateau_width) && y.between?(0, $plateau_height)
-		true
+			true
 		else 
-		false
+			false
 		end
 	end
 
 	def attempt_to_move
 		proposed_x = @x 
 		proposed_y = @y
+
 		if @direction == "N"
 			proposed_y += 1
 		elsif @direction == "E"
@@ -48,6 +50,7 @@ class Rover
 		else @direction == "W"
 			proposed_x -= 1
 		end
+		
 		if grid_is_available(proposed_x, proposed_y)
 			@x = proposed_x
 			@y = proposed_y
@@ -66,6 +69,7 @@ class Rover
 			@x -= 1
 		end
 	end
+
 	def turn_right
 		if @direction == "N"
 			@direction = "E"
@@ -77,6 +81,7 @@ class Rover
 			@direction = "N"
 		end
 	end
+
 	def turn_left
 		if @direction == "N"
 			@direction = "W"
@@ -87,7 +92,6 @@ class Rover
 		else @direction == "E"
 			@direction = "N"
 		end
-
 	end
 
 
@@ -103,22 +107,28 @@ input_grid_size=gets.chomp.split
 $plateau_width = input_grid_size[0].to_i
 $plateau_height = input_grid_size[1].to_i
 
-# puts "How many rovers do you have?"
-# input_number_of_rovers= gets.chomp.to_i
+puts "How many rovers do you have?"
+input_number_of_rovers= gets.chomp.to_i
 
+rovers = []
+input_number_of_rovers.times do |index|
 
+	puts "Creating new rover:"
+	puts "What is your initial position?"
+	input_initial_position = gets.chomp.split
+	rover = Rover.new(input_initial_position[0].to_i, input_initial_position[1].to_i, input_initial_position[2].to_s)
 
-puts "What is your initial position?"
-input_initial_position=gets.chomp.split
-rover = Rover.new(input_initial_position[0].to_i, input_initial_position[1].to_i, input_initial_position[2].to_s)
+	puts "What are the instructions?"
+	input_instructions = gets.chomp
+	rover.read_instructions(input_instructions)
+	rovers << rover
 
-puts rover
-# puts "What are the instructions?"
-# input_instructions = gets.chomp
-# rover.read_instructions(input_instructions)
-# puts rover
+end
 
-
+puts "Displaying all rovers:"
+rovers.each do |rover|
+	puts rover
+end
 
 
 
